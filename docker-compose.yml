@@ -1,0 +1,12 @@
+services:
+  wstunnel:
+    image: ghcr.io/onixldlc/wstunnel:latest
+    container_name: wstunnel
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - RUST_LOG=INFO
+      - SERVER_PROTOCOL=wss
+      - SERVER_LISTEN=[::]
+      - SERVER_PORT=8080
