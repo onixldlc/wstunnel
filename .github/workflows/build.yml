@@ -16,6 +16,7 @@ on:
         default: ''
 
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
@@ -113,6 +114,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            BUILDER_IMAGE=rust:1.93-trixie
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
